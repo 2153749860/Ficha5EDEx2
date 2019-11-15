@@ -16,20 +16,20 @@ public class DoubleLinkedList<T> implements ListADT<T> {
     private int count;
     private DoubleNode<T> head;
     private DoubleNode<T> tail;
-
+    
     public DoubleLinkedList() {
         this.count = 0;
         this.head = null;
         this.tail = null;
     }
-
-    public void add(T element){
+    
+    public void add(T element) {
         DoubleNode newNode = new DoubleNode(element);
         
         if (this.count == 0) {
             this.head = newNode;
             this.tail = newNode;
-        } else{
+        } else {
             this.head.setPrevious(newNode);
             newNode.setNext(this.head);
             this.head = newNode;
@@ -39,7 +39,6 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         
     }
     
-    
     @Override
     public T removeFirst() throws EmptyCollectionException {
         if (this.isEmpty()) {
@@ -48,61 +47,82 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         
         DoubleNode<T> tmp = this.head;
         
-        this.head = this.head.getNext();
-        
-        //rr ligaçoes
-        tmp.setNext(null);
-        this.head.setPrevious(null);
+        if (this.size() == 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.head = this.head.getNext();
+            
+            tmp.setNext(null);
+            this.head.setPrevious(null);
+        }
         
         this.count--;
         return tmp.getElement();
     }
-
+    
     @Override
     public T removeLast() throws EmptyCollectionException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.isEmpty()) {
+            throw new EmptyCollectionException("Lista vazia!");
+        }
+        
+        DoubleNode<T> tmp = this.tail;
+        
+        if (this.size() == 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = this.tail.getPrevious();
+            
+            tmp.setPrevious(null);
+            this.tail.setNext(null);
+        }
+        
+        this.count--;
+        return tmp.getElement();
     }
-
+    
     @Override
     public T remove(T element) throws EmptyCollectionException, ElementoNaoExisteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public T first() throws EmptyCollectionException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public T last() throws EmptyCollectionException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public boolean contains(T target) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public boolean isEmpty() {
         return this.count == 0;
     }
-
+    
     @Override
     public int size() {
         return this.count;
     }
-
+    
     @Override
     public Iterator<T> iterator() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public String toString() {
         String str = "";
         DoubleNode<T> current = this.head;
-
+        
         while (current != null) {
             //System.out.println(current.getElement().toString());
             str += current.getElement().toString() + "\n";
@@ -112,7 +132,5 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         str += "\n" + "Count: " + this.size();
         return str;
     }
-    
-    
     
 }
