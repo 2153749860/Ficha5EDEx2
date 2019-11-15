@@ -25,20 +25,26 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
     public void add(T element){
         DoubleNode newNode = new DoubleNode(element);
-        /*
+        
         if (this.count == 0) {
             this.head = newNode;
             this.tail = newNode;
         } else{
-            
+            this.head.setPrevious(newNode);
+            newNode.setNext(this.head);
+            this.head = newNode;
         }
-        */
+        
+        this.count++;
+        
     }
     
     
     @Override
     public T removeFirst() throws EmptyCollectionException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.isEmpty()) {
+            
+        }
     }
 
     @Override
@@ -68,12 +74,12 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.count == 0;
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.count;
     }
 
     @Override
