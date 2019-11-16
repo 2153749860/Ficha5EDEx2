@@ -98,28 +98,28 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         } else {
             boolean found = false;
             DoubleNode<T> current = this.head.getNext();
-            
+
             while (!found && current != null) {
                 if (current.getElement().equals(element)) {
                     found = true;
                 } else {
                     current = current.getNext();
                 }
-                
+
             }
 
             if (found == false) {
                 throw new ElementoNaoExisteException("Elemento não existe na lista!");
             }
-            
+
             (current.getPrevious()).setNext(current.getNext());
             (current.getNext()).setPrevious(current.getPrevious());
-            
+
             current.setNext(null);
             current.setPrevious(null);
-            
+
             tmp = current.getElement();
-            
+
             this.count--;
 
         }
@@ -130,25 +130,47 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
     @Override
     public T first() throws EmptyCollectionException {
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             throw new EmptyCollectionException("Lista vazia!");
         }
-        
+
         return this.head.getElement();
     }
 
     @Override
     public T last() throws EmptyCollectionException {
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             throw new EmptyCollectionException("Lista Vazia!");
         }
-        
+
         return this.tail.getElement();
     }
 
     @Override
-    public boolean contains(T target) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean contains(T target) throws EmptyCollectionException {
+        if (this.isEmpty()) {
+            throw new EmptyCollectionException("Lista Vazia!");
+        }
+
+        boolean found = false;
+        DoubleNode<T> current = this.head;
+
+        while (!found && current != null) {
+            if (current.getElement().equals(target)) {
+                found = true;
+            } else {
+                current = current.getNext();
+            }
+
+        }
+        
+        if(!found){
+            throw new EmptyCollectionException("Elemento não existe!");
+        }
+        
+        
+
+        return true;
     }
 
     @Override

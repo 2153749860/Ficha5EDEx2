@@ -17,7 +17,7 @@ public class MainListADT {
     public static void main(String[] args) throws EmptyCollectionException, ElementoNaoExisteException {
         DoubleLinkedList lista1 = new DoubleLinkedList();
 
-        int teste = 14;
+        int teste = 19;
 
         switch (teste) {
             case 0: //teste size com lista vazia
@@ -130,7 +130,50 @@ public class MainListADT {
             case 14: //teste remove com lista vazia
                 System.out.println(lista1.toString());
                 lista1.remove(1);
+                break;
                 
+            case 15: //teste contains com elemento que nao existe
+                lista1.add(1);
+                lista1.add(2);
+                lista1.add(3);
+                
+                System.out.println(lista1.toString());
+                
+                System.out.println(lista1.contains(4));
+                break;
+                
+            case 16: //teste contains com lista vazia
+                System.out.println(lista1.contains(1));
+                
+            case 17: //teste contains do primeiro elemento
+                lista1.add(1);
+                lista1.add(2);
+                lista1.add(3);
+                
+                System.out.println(lista1.toString());
+                
+                System.out.println(lista1.contains(3));
+                break;
+                
+            case 18: //teste contains do ultimo elemento
+                lista1.add(1);
+                lista1.add(2);
+                lista1.add(3);
+                
+                System.out.println(lista1.toString());
+                
+                System.out.println(lista1.contains(1));
+                break;
+                
+            case 19: //teste contains do elemento do meio
+                lista1.add(1);
+                lista1.add(2);
+                lista1.add(3);
+                
+                System.out.println(lista1.toString());
+                
+                System.out.println(lista1.contains(2));
+                break;
         }
     }
 
