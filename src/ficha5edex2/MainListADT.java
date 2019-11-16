@@ -14,10 +14,10 @@ public class MainListADT {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws EmptyCollectionException {
+    public static void main(String[] args) throws EmptyCollectionException, ElementoNaoExisteException {
         DoubleLinkedList lista1 = new DoubleLinkedList();
 
-        int teste = 9;
+        int teste = 14;
 
         switch (teste) {
             case 0: //teste size com lista vazia
@@ -85,6 +85,52 @@ public class MainListADT {
                 System.out.println(lista1.toString());
                 lista1.removeLast();
                 System.out.println(lista1.toString());
+                break;
+                
+            case 10: //teste remove de elemento que nao existe
+                lista1.add(1);
+                lista1.add(2);
+                System.out.println(lista1.toString());
+                lista1.remove(3);
+                break;
+                
+            case 11: //teste remove com apenas 1 elemento na lista
+                lista1.add(1);
+                lista1.remove(1);
+                
+                System.out.println(lista1.toString());
+                break;
+                
+            case 12: //teste remove com alguns elementos na lista
+                lista1.add(1);
+                lista1.add(2);
+                lista1.add(3);
+                lista1.add(4);
+                
+                System.out.println(lista1.toString());
+                
+                lista1.remove(2);
+                
+                System.out.println(lista1.toString());
+                break;
+                
+            case 13: //teste remove tail da lista
+                lista1.add(1);
+                lista1.add(2);
+                lista1.add(3);
+                lista1.add(4);
+                
+                System.out.println(lista1.toString());
+                
+                lista1.remove(4);
+                
+                System.out.println(lista1.toString());
+                break;
+                
+            case 14: //teste remove com lista vazia
+                System.out.println(lista1.toString());
+                lista1.remove(1);
+                
         }
     }
 
