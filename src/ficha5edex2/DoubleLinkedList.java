@@ -15,10 +15,10 @@ import java.util.NoSuchElementException;
  */
 public class DoubleLinkedList<T> implements ListADT<T> {
 
-    private int count;
+    protected int count;
     protected int modCount;
-    private DoubleNode<T> head;
-    private DoubleNode<T> tail;
+    protected DoubleNode<T> head;
+    protected DoubleNode<T> tail;
 
     public DoubleLinkedList() {
         this.count = 0;
