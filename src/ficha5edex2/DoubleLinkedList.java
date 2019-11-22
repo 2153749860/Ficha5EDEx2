@@ -5,7 +5,9 @@
  */
 package ficha5edex2;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -188,7 +190,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new MyItr();
     }
 
     @Override
@@ -210,6 +212,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
         int expectedModCount;
         boolean okToRemove;
+        DoubleNode<T> current;
 
         /**
          * Creates an Iterator.
@@ -219,16 +222,25 @@ public class DoubleLinkedList<T> implements ListADT<T> {
             //proxima coisa a fazer neste projecto e colocar o modcount
             this.expectedModCount = modCount;
             okToRemove = false;
+            current = new DoubleNode();
         }
 
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            if (this.expectedModCount != modCount) {
+                throw new ConcurrentModificationException("Lista imcompativel!");
+            }
+            return this.current != null;
         }
 
         @Override
         public T next() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            this.okToRemove = true;
+            this.current = this.current.getNext();
+            return this.current.getPrevious().getElement();
         }
 
         @Override
