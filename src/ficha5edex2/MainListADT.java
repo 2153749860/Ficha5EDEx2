@@ -5,6 +5,8 @@
  */
 package ficha5edex2;
 
+import java.util.Iterator;
+
 /**
  *
  * @author tiago
@@ -17,7 +19,7 @@ public class MainListADT {
     public static void main(String[] args) throws EmptyCollectionException, ElementoNaoExisteException {
         DoubleLinkedList lista1 = new DoubleLinkedList();
 
-        int teste = 19;
+        int teste = 20;
 
         switch (teste) {
             case 0: //teste size com lista vazia
@@ -173,6 +175,31 @@ public class MainListADT {
                 System.out.println(lista1.toString());
                 
                 System.out.println(lista1.contains(2));
+                break;
+                
+            case 20: //teste com iterator
+                lista1.add(1);
+                lista1.add(2);
+                lista1.add(3);
+
+                Iterator it4 = lista1.iterator();
+
+                while (it4.hasNext()) {
+
+                    int obj = (int) it4.next();
+                    System.out.println(obj);
+
+                    it4.remove();
+
+                }
+
+                Iterator it5 = lista1.iterator();
+
+                while (it5.hasNext()) {
+                    int obj = (int) it5.next();
+                    System.out.println(obj);
+                }
+
                 break;
         }
     }
