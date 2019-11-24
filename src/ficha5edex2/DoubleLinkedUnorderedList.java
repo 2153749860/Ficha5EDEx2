@@ -70,10 +70,15 @@ public class DoubleLinkedUnorderedList<T> extends DoubleLinkedList<T> implements
             this.addToRear(element);
         } else {
             DoubleNode<T> newNode = new DoubleNode(element);
+            
             newNode.setPrevious(current);
             newNode.setNext(current.getNext());
+            
             current.setNext(newNode);
             (newNode.getNext()).setPrevious(newNode);
+            
+            this.count++;
+            this.modCount++;
         }
 
     }
