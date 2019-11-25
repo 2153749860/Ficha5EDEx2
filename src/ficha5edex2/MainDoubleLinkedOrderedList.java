@@ -20,7 +20,7 @@ public class MainDoubleLinkedOrderedList {
         // TODO code application logic here
                 DoubleLinkedOrderedList<String> lista1 = new DoubleLinkedOrderedList();
 
-        int teste = 2;
+        int teste = 5;
 
         switch (teste) {
             case 0: //teste add se nao existir elementos
@@ -54,6 +54,71 @@ public class MainDoubleLinkedOrderedList {
 
                 while (it3.hasNext()) {
                     String obj = (String) it3.next();
+                    System.out.println(obj);
+                }
+                break;
+                
+            case 3: //teste add no meio
+                lista1.add("A");
+                lista1.add("B");
+                lista1.add("D");
+                lista1.add("E");
+                
+                lista1.add("C");
+
+                Iterator it4 = lista1.iterator();
+
+                while (it4.hasNext()) {
+                    String obj = (String) it4.next();
+                    System.out.println(obj);
+                }
+                break;
+                
+            case 4: //teste add no meio segunda posicao
+                lista1.add("A");
+                lista1.add("C");
+                lista1.add("D");
+                lista1.add("E");
+                
+                lista1.add("B");
+
+                Iterator it5 = lista1.iterator();
+
+                while (it5.hasNext()) {
+                    String obj = (String) it5.next();
+                    System.out.println(obj);
+                }
+                break;
+                
+                
+            case 5: //teste add penultima posicao
+                lista1.add("A");
+                lista1.add("B");
+                lista1.add("C");
+                lista1.add("E");
+                
+                lista1.add("D");
+
+                Iterator it6 = lista1.iterator();
+
+                while (it6.hasNext()) {
+                    String obj = (String) it6.next();
+                    System.out.println(obj);
+                }
+                break;
+                
+            case 6: //teste add com elemento igual
+                lista1.add("A");
+                lista1.add("B");
+                lista1.add("C");
+                lista1.add("D");
+                
+                lista1.add("B");
+
+                Iterator it7 = lista1.iterator();
+
+                while (it7.hasNext()) {
+                    String obj = (String) it7.next();
                     System.out.println(obj);
                 }
                 break;
